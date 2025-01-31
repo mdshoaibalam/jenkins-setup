@@ -10,7 +10,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Hello jenkins
+          Hello jenkins pipeline
         </p>
         <button onClick={handleClick}>Click me </button>
       </header>
