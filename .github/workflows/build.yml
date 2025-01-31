@@ -1,0 +1,39 @@
+name: Build React App
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on push to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger the workflow on pull requests to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu environment
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16  # Specify the Node.js version (e.g., 16)
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Build the React application
+      - name: Build the app
+        run: npm run build
+
+      # (Optional) Upload build artifacts
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: build/  # Path to the build output directory
